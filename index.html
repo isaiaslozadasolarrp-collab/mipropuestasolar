@@ -199,6 +199,9 @@
     margin-bottom: -70px;
     display: flex;
     justify-content: center;
+    align-items: center;
+    width: 100%;
+    align-self: center;
     opacity: 0;
     animation: fadeUp 0.7s 1.4s forwards;
   }
@@ -1031,10 +1034,4 @@
         if (locText) { locText.textContent = 'Ubicaci\u00F3n no disponible'; locText.style.color = '#94A3B8'; }
         buildAndSend(name, '');
       },
-      { timeout: 6000, maximumAge: 300000 }
-    );
-    return false;
-  }
-</script>
-</body>
-</html>
+      { timeout: 6000, maximumAge
