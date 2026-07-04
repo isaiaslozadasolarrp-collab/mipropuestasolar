@@ -731,6 +731,108 @@
     pointer-events: none;
   }
 
+  /* ── TABLET (iPad) ── */
+  @media (min-width: 601px) and (max-width: 1024px) {
+    .v-short { display: none; }
+
+    .hero {
+      padding: 120px 2rem 4rem;
+    }
+
+    .sun-orb {
+      width: 280px;
+      height: 280px;
+      top: -50px;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 6vw, 4rem);
+    }
+
+    .cta-btn {
+      font-size: 1.1rem;
+      padding: 1rem 2.5rem;
+      min-height: 56px;
+    }
+
+    .trust-strip {
+      gap: 1.2rem;
+    }
+
+    .brand-logo {
+      width: 95px;
+      height: 95px;
+    }
+
+    .form-section {
+      padding: 4rem 2rem;
+    }
+
+    .card {
+      max-width: 560px;
+      padding: 2.5rem 2.5rem;
+    }
+
+    input[type="tel"],
+    input[type="number"],
+    input[type="text"] {
+      font-size: 1.05rem;
+      padding: 1rem 1.1rem;
+      min-height: 52px;
+    }
+
+    .btn-next {
+      padding: 1.1rem;
+      font-size: 1.05rem;
+      min-height: 56px;
+    }
+
+    .upload-zone {
+      padding: 2.5rem 2rem;
+    }
+
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+
+    .stat-card {
+      padding: 1.5rem 1.25rem;
+    }
+
+    .stat-num {
+      font-size: 2rem;
+    }
+
+    .voucher-text {
+      font-size: 0.95rem;
+    }
+
+    .step-circle {
+      width: 48px;
+      height: 48px;
+    }
+
+    /* Bigger touch targets for tablet */
+    .btn-back {
+      padding: 1rem;
+      min-height: 52px;
+    }
+
+    label {
+      font-size: 0.9rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+    }
+
+    .section-sub {
+      font-size: 1rem;
+    }
+  }
+
+  /* ── MOBILE ── */
   @media (max-width: 600px) {
     /* --- VOUCHER BANNER --- */
     .voucher-banner {
@@ -752,7 +854,7 @@
 
     /* --- HERO --- */
     .hero {
-      padding: 190px 1.2rem 3rem;
+      padding: 160px 1.2rem 3rem;
       justify-content: flex-start;
     }
     .logo {
@@ -762,9 +864,10 @@
     }
     .hero-tag {
       margin-bottom: 0.75rem;
+      font-size: 0.82rem;
     }
     .hero h1 {
-      font-size: clamp(2rem, 10vw, 3rem);
+      font-size: clamp(1.9rem, 9vw, 2.8rem);
       line-height: 1.1;
       margin-bottom: 0;
     }
@@ -774,30 +877,32 @@
       max-width: 90%;
     }
     .cta-btn {
-      font-size: 1rem;
-      padding: 0.9rem 2rem;
+      font-size: 1.05rem;
+      padding: 1rem 1.5rem;
       width: 100%;
-      max-width: 320px;
-      margin-top: 1.25rem;
+      max-width: 340px;
+      margin-top: 1.5rem;
+      min-height: 56px; /* Bigger touch target */
+      border-radius: 100px;
     }
     .trust-strip {
-      gap: 0.75rem;
+      gap: 0.6rem;
       flex-direction: column;
       align-items: center;
       margin-top: 1.25rem;
     }
     .trust-item {
-      font-size: 0.85rem;
+      font-size: 0.88rem;
     }
 
-    /* --- LOGO G --- */
+    /* --- LOGO --- */
     .brand-logo-wrap {
       margin-top: 1.5rem;
       margin-bottom: 0px;
     }
     .brand-logo {
-      width: 85px;
-      height: 85px;
+      width: 80px;
+      height: 80px;
     }
 
     /* --- STATS --- */
@@ -818,44 +923,109 @@
 
     /* --- FORM SECTION --- */
     .form-section {
-      padding: 2.5rem 1.2rem 3rem;
+      padding: 2.5rem 1rem 3rem;
     }
     .section-title {
       font-size: 1.5rem;
     }
     .section-sub {
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Bigger inputs for touch */
+    input[type="tel"],
+    input[type="number"],
+    input[type="text"] {
+      font-size: 1rem;
+      padding: 0.95rem 1rem;
+      min-height: 52px;
+      border-radius: 14px;
+      margin-bottom: 1rem;
+    }
+
+    label {
       font-size: 0.88rem;
+      margin-bottom: 0.5rem;
     }
-    .step-card {
-      padding: 1.5rem 1.25rem;
-    }
-    .form-input {
+
+    .btn-next {
+      padding: 1.1rem;
       font-size: 1rem;
-      padding: 0.9rem 1rem;
+      min-height: 56px; /* Big touch target */
+      border-radius: 16px;
     }
-    .btn-primary {
-      width: 100%;
-      font-size: 1rem;
-      padding: 0.9rem;
+
+    .btn-back {
+      padding: 0.95rem;
+      min-height: 52px;
+      border-radius: 14px;
+    }
+
+    .upload-zone {
+      padding: 1.75rem 1.25rem;
     }
 
     /* --- STEPPER --- */
-    .stepper {
-      gap: 0;
-    }
     .step-label {
-      font-size: 0.65rem;
+      font-size: 0.62rem;
+      white-space: nowrap;
+    }
+
+    .step-circle {
+      width: 40px;
+      height: 40px;
+      font-size: 0.85rem;
     }
 
     /* --- SUN ORB --- */
     .sun-orb {
-      width: 220px;
-      height: 220px;
-      top: -40px;
+      width: 200px;
+      height: 200px;
+      top: -35px;
     }
-  }
-  @media (min-width: 601px) {
-    .v-short { display: none; }
+
+    /* --- CARD --- */
+    .card {
+      padding: 1.75rem 1.25rem;
+      border-radius: 20px;
+    }
+
+    /* --- PANEL --- */
+    .panel-icon {
+      font-size: 2rem;
+    }
+    .panel-title {
+      font-size: 1.2rem;
+    }
+    .panel-desc {
+      font-size: 0.85rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* --- PING INFO --- */
+    .ping-info {
+      font-size: 0.8rem;
+    }
+
+    /* --- SUCCESS --- */
+    .success-ring {
+      width: 70px;
+      height: 70px;
+      font-size: 2rem;
+    }
+    .success-title {
+      font-size: 1.3rem;
+    }
+    .success-sub {
+      font-size: 0.85rem;
+    }
+    .next-steps {
+      padding: 1rem 1.25rem;
+    }
+    .next-step-item {
+      font-size: 0.82rem;
+    }
   }
 
   @keyframes fadeUp {
@@ -863,10 +1033,21 @@
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  @media (max-width: 480px) {
-    .card { padding: 2rem 1.25rem; }
-    .step-label { font-size: 0.6rem; }
-    .step-circle { width: 38px; height: 38px; font-size: 0.8rem; }
+  /* ── SMALL MOBILE ── */
+  @media (max-width: 390px) {
+    .card { padding: 1.5rem 1rem; }
+    .step-label { font-size: 0.58rem; }
+    .step-circle { width: 36px; height: 36px; font-size: 0.78rem; }
+    .hero h1 { font-size: clamp(1.7rem, 9vw, 2.5rem); }
+    .cta-btn { font-size: 1rem; padding: 0.95rem 1.25rem; }
+  }
+
+  /* ── Touch device improvements ── */
+  @media (hover: none) and (pointer: coarse) {
+    .cta-btn:hover { transform: none; }
+    .btn-next:hover { transform: none; box-shadow: 0 4px 20px rgba(255,184,0,0.3); }
+    .btn-back:hover { border-color: var(--border); }
+    input:focus { box-shadow: 0 0 0 3px rgba(255,184,0,0.2); }
   }
 </style>
 </head>
@@ -949,7 +1130,7 @@
     <input class="form-input" type="text" id="name" placeholder="Tu nombre">
     <div class="error-msg" id="nameError">Por favor ingresa tu nombre.</div>
 
-    <a id="waBtn" href="#" onclick="return openWhatsApp()" class="cta-btn" style="display:flex;align-items:center;justify-content:center;gap:0.6rem;margin-top:1.5rem;text-decoration:none;font-size:1.05rem;">
+    <a id="waBtn" href="#" onclick="return openWhatsApp()" class="cta-btn" style="display:flex;align-items:center;justify-content:center;gap:0.6rem;margin-top:1.5rem;text-decoration:none;font-size:1.05rem;width:100%;max-width:400px;min-height:58px;border-radius:100px;">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.116 1.523 5.845L0 24l6.335-1.497A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.8 9.8 0 01-5.002-1.368l-.36-.213-3.722.879.936-3.618-.235-.372A9.787 9.787 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
       Contactar por WhatsApp
     </a>
@@ -972,10 +1153,10 @@
 <script>
   // Hide voucher banner when form section becomes visible
   (function() {
-    const banner = document.getElementById('voucherBanner');
-    const target = document.getElementById('empezar');
+    var banner = document.getElementById('voucherBanner');
+    var target = document.getElementById('empezar');
     if (banner && target) {
-      const observer = new IntersectionObserver(function(entries) {
+      var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
           if (entry.isIntersecting) {
             banner.classList.add('hidden');
@@ -990,38 +1171,59 @@
     }
   })();
 
+  // Build WhatsApp message and open it
   function buildAndSend(name, locLine) {
     var msg = encodeURIComponent(
       '\uD83C\uDF1E Hola, soy ' + name + ' y quiero mi evaluaci\u00F3n solar gratuita.' +
       locLine +
       '\n\n\uD83D\uDCF8 Ahora te env\u00EDo fotos de mi factura el\u00E9ctrica.'
     );
-    window.location.href = 'https://wa.me/17872160220?text=' + msg;
+    var waURL = 'https://wa.me/17872160220?text=' + msg;
+
+    // Try window.open first (works better on iOS), fall back to location.href
+    var opened = window.open(waURL, '_blank');
+    if (!opened || opened.closed || typeof opened.closed === 'undefined') {
+      window.location.href = waURL;
+    }
+
+    // Re-enable button after 3 seconds
+    setTimeout(function() {
+      var btn = document.getElementById('waBtn');
+      if (btn) {
+        btn.style.opacity = '1';
+        btn.style.pointerEvents = 'auto';
+      }
+    }, 3000);
   }
 
   function openWhatsApp() {
-    const name = document.getElementById('name').value.trim();
-    const nameErr = document.getElementById('nameError');
+    var name = document.getElementById('name') ? document.getElementById('name').value.trim() : '';
+    var nameErr = document.getElementById('nameError');
 
-    if (name.length < 2) {
-      nameErr.classList.add('show');
-      document.getElementById('name').focus();
+    if (!name || name.length < 2) {
+      if (nameErr) nameErr.classList.add('show');
+      if (document.getElementById('name')) document.getElementById('name').focus();
       return false;
     }
-    nameErr.classList.remove('show');
+    if (nameErr) nameErr.classList.remove('show');
 
     var btn = document.getElementById('waBtn');
-    btn.style.opacity = '0.7';
-    btn.style.pointerEvents = 'none';
+    if (btn) {
+      btn.style.opacity = '0.7';
+      btn.style.pointerEvents = 'none';
+    }
 
     var locIcon = document.getElementById('locIcon');
     var locText = document.getElementById('locText');
-    if (locText) { locText.textContent = 'Obteniendo ubicaci\u00F3n...'; }
 
     if (!navigator.geolocation) {
+      // No geolocation available — send without location
       buildAndSend(name, '');
       return false;
     }
+
+    // Try to get location with 6 second timeout
+    if (locText) locText.textContent = 'Obteniendo ubicaci\u00F3n...';
 
     navigator.geolocation.getCurrentPosition(
       function(pos) {
@@ -1031,8 +1233,16 @@
         buildAndSend(name, locLine);
       },
       function() {
+        // Location denied or error — send without location
         if (locIcon) locIcon.textContent = '\uD83D\uDCCD';
         if (locText) { locText.textContent = 'Ubicaci\u00F3n no disponible'; locText.style.color = '#94A3B8'; }
         buildAndSend(name, '');
       },
-      { timeout: 6000, maximum
+      { timeout: 6000, maximumAge: 0, enableHighAccuracy: false }
+    );
+
+    return false;
+  }
+</script>
+</body>
+</html>
