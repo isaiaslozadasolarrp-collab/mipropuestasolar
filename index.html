@@ -1171,7 +1171,33 @@
     }
   })();
 
-  // Build WhatsApp message and open it
+  // Capture location when page loads (stored for later, doesn't block anything)
+  var userLocation = '';
+  (function requestLocationOnLoad() {
+    var locIcon = document.getElementById('locIcon');
+    var locText = document.getElementById('locText');
+
+    if (!navigator.geolocation) {
+      if (locText) { locText.textContent = 'Ubicación no disponible'; locText.style.color = '#94A3B8'; }
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      function(pos) {
+        userLocation = '\nUbicación: https://maps.google.com/?q=' + pos.coords.latitude + ',' + pos.coords.longitude;
+        if (locIcon) locIcon.textContent = '\u2705';
+        if (locText) { locText.textContent = 'Ubicación capturada'; locText.style.color = '#4ade80'; }
+      },
+      function() {
+        userLocation = '';
+        if (locIcon) locIcon.textContent = '\uD83D\uDCCD';
+        if (locText) { locText.textContent = 'Ubicación no disponible'; locText.style.color = '#94A3B8'; }
+      },
+      { timeout: 10000, maximumAge: 60000, enableHighAccuracy: false }
+    );
+  })();
+
+  // Build WhatsApp message and open it IMMEDIATELY (Safari-safe direct user action)
   function openWhatsApp() {
     var name = document.getElementById('name') ? document.getElementById('name').value.trim() : '';
     var nameErr = document.getElementById('nameError');
@@ -1183,9 +1209,9 @@
     }
     if (nameErr) nameErr.classList.remove('show');
 
-    // Build and open WhatsApp IMMEDIATELY (Safari requires this to be a direct user action)
     var msg = encodeURIComponent(
       'Hola!!! Soy ' + name + ' Vamos a solucionar este problema, no quiero mas preocupaciones!' +
+      userLocation +
       '\n\nAhora te env\u00EDo foto de las cuatro p\u00E1ginas de luma.'
     );
     var waURL = 'https://wa.me/17872160220?text=' + msg;
