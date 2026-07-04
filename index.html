@@ -1217,23 +1217,33 @@
       return false;
     }
 
-    // Try to get location with 6 second timeout
-    if (locText) locText.textContent = 'Obteniendo ubicaci\u00F3n...';
+    // Try to get location with 3 second timeout
+    if (locText) locText.textContent = 'Obteniendo ubicación...';
+
+    var sent = false;
+    var safety = setTimeout(function() {
+      if (!sent) { sent = true; buildAndSend(name, ''); }
+    }, 3000);
 
     navigator.geolocation.getCurrentPosition(
       function(pos) {
-        var locLine = '\nUbicaci\u00F3n: https://maps.google.com/?q=' + pos.coords.latitude + ',' + pos.coords.longitude;
+        if (sent) return;
+        sent = true;
+        clearTimeout(safety);
+        var locLine = '\nUbicación: https://maps.google.com/?q=' + pos.coords.latitude + ',' + pos.coords.longitude;
         if (locIcon) locIcon.textContent = '\u2705';
-        if (locText) { locText.textContent = 'Ubicaci\u00F3n capturada'; locText.style.color = '#4ade80'; }
+        if (locText) { locText.textContent = 'Ubicación capturada'; locText.style.color = '#4ade80'; }
         buildAndSend(name, locLine);
       },
       function() {
-        // Location denied or error — send without location
+        if (sent) return;
+        sent = true;
+        clearTimeout(safety);
         if (locIcon) locIcon.textContent = '\uD83D\uDCCD';
-        if (locText) { locText.textContent = 'Ubicaci\u00F3n no disponible'; locText.style.color = '#94A3B8'; }
+        if (locText) { locText.textContent = 'Ubicación no disponible'; locText.style.color = '#94A3B8'; }
         buildAndSend(name, '');
       },
-      { timeout: 6000, maximumAge: 0, enableHighAccuracy: false }
+      { timeout: 3000, maximumAge: 0, enableHighAccuracy: false }
     );
 
     return false;
