@@ -1179,12 +1179,7 @@
       '\n\n\uD83D\uDCF8 Ahora te env\u00EDo fotos de mi factura el\u00E9ctrica.'
     );
     var waURL = 'https://wa.me/17872160220?text=' + msg;
-
-    // Try window.open first (works better on iOS), fall back to location.href
-    var opened = window.open(waURL, '_blank');
-    if (!opened || opened.closed || typeof opened.closed === 'undefined') {
-      window.location.href = waURL;
-    }
+    window.location.href = waURL;
 
     // Re-enable button after 3 seconds
     setTimeout(function() {
