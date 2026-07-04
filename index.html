@@ -1172,25 +1172,6 @@
   })();
 
   // Build WhatsApp message and open it
-  function buildAndSend(name, locLine) {
-    var msg = encodeURIComponent(
-      'Hola!!! Soy ' + name + ' Vamos a solucionar este problema, no quiero mas preocupaciones!' +
-      locLine +
-      '\n\nAhora te env\u00EDo foto de las cuatro p\u00E1ginas de luma.'
-    );
-    var waURL = 'https://wa.me/17872160220?text=' + msg;
-    window.location.href = waURL;
-
-    // Re-enable button after 3 seconds
-    setTimeout(function() {
-      var btn = document.getElementById('waBtn');
-      if (btn) {
-        btn.style.opacity = '1';
-        btn.style.pointerEvents = 'auto';
-      }
-    }, 3000);
-  }
-
   function openWhatsApp() {
     var name = document.getElementById('name') ? document.getElementById('name').value.trim() : '';
     var nameErr = document.getElementById('nameError');
@@ -1202,49 +1183,13 @@
     }
     if (nameErr) nameErr.classList.remove('show');
 
-    var btn = document.getElementById('waBtn');
-    if (btn) {
-      btn.style.opacity = '0.7';
-      btn.style.pointerEvents = 'none';
-    }
-
-    var locIcon = document.getElementById('locIcon');
-    var locText = document.getElementById('locText');
-
-    if (!navigator.geolocation) {
-      // No geolocation available — send without location
-      buildAndSend(name, '');
-      return false;
-    }
-
-    // Try to get location with 3 second timeout
-    if (locText) locText.textContent = 'Obteniendo ubicación...';
-
-    var sent = false;
-    var safety = setTimeout(function() {
-      if (!sent) { sent = true; buildAndSend(name, ''); }
-    }, 3000);
-
-    navigator.geolocation.getCurrentPosition(
-      function(pos) {
-        if (sent) return;
-        sent = true;
-        clearTimeout(safety);
-        var locLine = '\nUbicación: https://maps.google.com/?q=' + pos.coords.latitude + ',' + pos.coords.longitude;
-        if (locIcon) locIcon.textContent = '\u2705';
-        if (locText) { locText.textContent = 'Ubicación capturada'; locText.style.color = '#4ade80'; }
-        buildAndSend(name, locLine);
-      },
-      function() {
-        if (sent) return;
-        sent = true;
-        clearTimeout(safety);
-        if (locIcon) locIcon.textContent = '\uD83D\uDCCD';
-        if (locText) { locText.textContent = 'Ubicación no disponible'; locText.style.color = '#94A3B8'; }
-        buildAndSend(name, '');
-      },
-      { timeout: 3000, maximumAge: 0, enableHighAccuracy: false }
+    // Build and open WhatsApp IMMEDIATELY (Safari requires this to be a direct user action)
+    var msg = encodeURIComponent(
+      'Hola!!! Soy ' + name + ' Vamos a solucionar este problema, no quiero mas preocupaciones!' +
+      '\n\nAhora te env\u00EDo foto de las cuatro p\u00E1ginas de luma.'
     );
+    var waURL = 'https://wa.me/17872160220?text=' + msg;
+    window.location.href = waURL;
 
     return false;
   }
